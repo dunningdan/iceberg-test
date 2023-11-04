@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.util;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -77,6 +78,7 @@ public class SerializationUtil {
 
     try (ByteArrayInputStream bais = new ByteArrayInputStream(bytes);
         ObjectInputStream ois = new ObjectInputStream(bais)) {
+      ObjectInputFilters.enableObjectFilterIfUnprotected(ois);
       return (T) ois.readObject();
     } catch (IOException e) {
       throw new UncheckedIOException("Failed to deserialize object", e);

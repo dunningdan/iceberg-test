@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.flink.sink.shuffle;
 
+import io.github.pixee.security.ObjectInputFilters;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -83,6 +84,7 @@ class DataStatisticsUtil {
           throws IOException {
     ByteArrayInputStream bytesIn = new ByteArrayInputStream(bytes);
     ObjectInputStream in = new ObjectInputStream(bytesIn);
+    ObjectInputFilters.enableObjectFilterIfUnprotected(in);
 
     long completedCheckpointId = in.readLong();
     int statisticsBytesLength = in.readInt();
