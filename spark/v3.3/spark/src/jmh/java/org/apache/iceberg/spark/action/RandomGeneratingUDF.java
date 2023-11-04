@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.spark.action;
 
+import java.security.SecureRandom;
 import static org.apache.spark.sql.functions.udf;
 
 import java.io.Serializable;
@@ -29,7 +30,7 @@ import org.apache.spark.sql.types.DataTypes;
 
 class RandomGeneratingUDF implements Serializable {
   private final long uniqueValues;
-  private Random rand = new Random();
+  private Random rand = new SecureRandom();
 
   RandomGeneratingUDF(long uniqueValues) {
     this.uniqueValues = uniqueValues;

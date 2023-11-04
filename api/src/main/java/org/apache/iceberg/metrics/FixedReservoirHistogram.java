@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.metrics;
 
+import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.Random;
 import org.apache.iceberg.relocated.com.google.common.base.Preconditions;
@@ -29,7 +30,7 @@ public class FixedReservoirHistogram implements Histogram {
   private int count;
 
   public FixedReservoirHistogram(int reservoirSize) {
-    this.rand = new Random();
+    this.rand = new SecureRandom();
     this.measurements = new long[reservoirSize];
     this.count = 0;
   }

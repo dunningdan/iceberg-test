@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.delta;
 
+import java.security.SecureRandom;
 import static org.apache.spark.sql.functions.current_date;
 import static org.apache.spark.sql.functions.date_add;
 import static org.apache.spark.sql.functions.expr;
@@ -323,7 +324,7 @@ public class TestSnapshotDeltaLakeTable extends SparkDeltaLakeSnapshotTestBase {
     String vacuumTestTableLocation = temp.toFile().toURI().toString();
 
     writeDeltaTable(nestedDataFrame, vacuumTestIdentifier, vacuumTestTableLocation, null);
-    Random random = new Random();
+    Random random = new SecureRandom();
     for (int i = 0; i < 13; i++) {
       spark.sql(
           "UPDATE "
@@ -359,7 +360,7 @@ public class TestSnapshotDeltaLakeTable extends SparkDeltaLakeSnapshotTestBase {
     String logCleanTestTableLocation = temp.toFile().toURI().toString();
 
     writeDeltaTable(nestedDataFrame, logCleanTestIdentifier, logCleanTestTableLocation, "id");
-    Random random = new Random();
+    Random random = new SecureRandom();
     for (int i = 0; i < 25; i++) {
       spark.sql(
           "UPDATE "
