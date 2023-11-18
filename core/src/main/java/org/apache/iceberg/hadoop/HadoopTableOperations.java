@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.hadoop;
 
+import io.github.pixee.security.BoundedLineReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -317,7 +318,7 @@ public class HadoopTableOperations implements TableOperations {
     try (InputStreamReader fsr =
             new InputStreamReader(fs.open(versionHintFile), StandardCharsets.UTF_8);
         BufferedReader in = new BufferedReader(fsr)) {
-      return Integer.parseInt(in.readLine().replace("\n", ""));
+      return Integer.parseInt(BoundedLineReader.readLine(in, 5_000_000).replace("\n", ""));
 
     } catch (Exception e) {
       try {
