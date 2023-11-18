@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.spark.data.parquet;
 
+import java.nio.file.Files;
 import static org.apache.iceberg.types.Types.NestedField.optional;
 import static org.apache.iceberg.types.Types.NestedField.required;
 
@@ -81,7 +82,7 @@ public class SparkParquetWritersFlatDataBenchmark {
   @Setup
   public void setupBenchmark() throws IOException {
     rows = RandomData.generateSpark(SCHEMA, NUM_RECORDS, 0L);
-    dataFile = File.createTempFile("parquet-flat-data-benchmark", ".parquet");
+    dataFile = Files.createTempFile("parquet-flat-data-benchmark", ".parquet").toFile();
     dataFile.delete();
   }
 

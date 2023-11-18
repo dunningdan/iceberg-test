@@ -30,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.UncheckedIOException;
+import java.nio.file.Files;
 import java.util.Arrays;
 import org.apache.iceberg.aliyun.AliyunProperties;
 import org.apache.iceberg.exceptions.NotFoundException;
@@ -72,7 +73,7 @@ public class OSSOutputStream extends PositionOutputStream {
 
   private static File newStagingFile(String ossStagingDirectory) {
     try {
-      File stagingFile = File.createTempFile("oss-file-io-", ".tmp", new File(ossStagingDirectory));
+      File stagingFile = Files.createTempFile(new File(ossStagingDirectory).toPath(), "oss-file-io-", ".tmp").toFile();
       stagingFile.deleteOnExit();
       return stagingFile;
     } catch (IOException e) {

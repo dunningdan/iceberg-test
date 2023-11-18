@@ -18,6 +18,7 @@
  */
 package org.apache.iceberg.spark.data.parquet;
 
+import java.nio.file.Files;
 import static org.apache.iceberg.types.Types.NestedField.optional;
 import static org.apache.iceberg.types.Types.NestedField.required;
 
@@ -91,7 +92,7 @@ public class SparkParquetReadersNestedDataBenchmark {
 
   @Setup
   public void setupBenchmark() throws IOException {
-    dataFile = File.createTempFile("parquet-nested-data-benchmark", ".parquet");
+    dataFile = Files.createTempFile("parquet-nested-data-benchmark", ".parquet").toFile();
     dataFile.delete();
     List<GenericData.Record> records = RandomData.generateList(SCHEMA, NUM_RECORDS, 0L);
     try (FileAppender<GenericData.Record> writer =

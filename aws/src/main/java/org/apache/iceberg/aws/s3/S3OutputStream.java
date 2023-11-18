@@ -216,7 +216,7 @@ class S3OutputStream extends PositionOutputStream {
     }
 
     createStagingDirectoryIfNotExists();
-    currentStagingFile = File.createTempFile("s3fileio-", ".tmp", stagingDirectory);
+    currentStagingFile = Files.createTempFile(stagingDirectory.toPath(), "s3fileio-", ".tmp").toFile();
     currentStagingFile.deleteOnExit();
     try {
       currentPartMessageDigest =
