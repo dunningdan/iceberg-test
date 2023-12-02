@@ -126,9 +126,9 @@ class AddFilesProcedure extends BaseProcedure {
   private boolean isFileIdentifier(Identifier ident) {
     String[] namespace = ident.namespace();
     return namespace.length == 1
-        && (namespace[0].equalsIgnoreCase("orc")
-            || namespace[0].equalsIgnoreCase("parquet")
-            || namespace[0].equalsIgnoreCase("avro"));
+        && ("orc".equalsIgnoreCase(namespace[0])
+            || "parquet".equalsIgnoreCase(namespace[0])
+            || "avro".equalsIgnoreCase(namespace[0]));
   }
 
   private InternalRow[] importToIceberg(

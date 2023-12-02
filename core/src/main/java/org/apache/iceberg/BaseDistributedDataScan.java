@@ -393,7 +393,7 @@ abstract class BaseDistributedDataScan
 
   private boolean mayHaveEqualityDeletes(Snapshot snapshot) {
     String count = snapshot.summary().get(SnapshotSummary.TOTAL_EQ_DELETES_PROP);
-    return count == null || !count.equals("0");
+    return count == null || !"0".equals(count);
   }
 
   // a monitor pool that enables planing data and deletes concurrently if remote planning is used

@@ -90,6 +90,6 @@ abstract class BaseCatalog
   }
 
   private static boolean isSystemNamespace(String[] namespace) {
-    return namespace.length == 1 && namespace[0].equalsIgnoreCase("system");
+    return namespace.length == 1 && "system".equalsIgnoreCase(namespace[0]);
   }
 }

@@ -110,7 +110,7 @@ public class SortOrderUtil {
       PartitionSpec spec) {
     Map<Pair<String, Integer>, PartitionField> requiredClusteringFields = Maps.newLinkedHashMap();
     for (PartitionField partField : spec.fields()) {
-      if (!partField.transform().toString().equals("void")) {
+      if (!"void".equals(partField.transform().toString())) {
         requiredClusteringFields.put(
             Pair.of(partField.transform().toString(), partField.sourceId()), partField);
       }

@@ -211,7 +211,7 @@ public class SparkDataFile implements DataFile {
       return sparkType.fieldIndex(name);
     } catch (IllegalArgumentException e) {
       // the partition field is absent for unpartitioned tables
-      if (name.equals("partition") && wrappedPartition.size() == 0) {
+      if ("partition".equals(name) && wrappedPartition.size() == 0) {
         return -1;
       }
       throw e;

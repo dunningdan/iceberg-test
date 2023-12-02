@@ -286,7 +286,7 @@ public class ExpressionParser {
         json.isObject(), "Cannot parse expression from non-object: %s", json);
 
     String type = JsonUtil.getString(TYPE, json);
-    if (type.equalsIgnoreCase(LITERAL)) {
+    if (LITERAL.equalsIgnoreCase(type)) {
       if (JsonUtil.getBool(VALUE, json)) {
         return Expressions.alwaysTrue();
       } else {
@@ -378,7 +378,7 @@ public class ExpressionParser {
     if (valueNode.isObject() && valueNode.has(TYPE)) {
       String type = JsonUtil.getString(TYPE, valueNode);
       Preconditions.checkArgument(
-          type.equalsIgnoreCase(LITERAL), "Cannot parse type as a literal: %s", type);
+          LITERAL.equalsIgnoreCase(type), "Cannot parse type as a literal: %s", type);
       return toValue.apply(JsonUtil.get(VALUE, valueNode));
     }
 

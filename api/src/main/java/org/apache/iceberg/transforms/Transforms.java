@@ -44,24 +44,24 @@ public class Transforms {
     if (widthMatcher.matches()) {
       String name = widthMatcher.group(1);
       int parsedWidth = Integer.parseInt(widthMatcher.group(2));
-      if (name.equalsIgnoreCase("truncate")) {
+      if ("truncate".equalsIgnoreCase(name)) {
         return Truncate.get(parsedWidth);
-      } else if (name.equalsIgnoreCase("bucket")) {
+      } else if ("bucket".equalsIgnoreCase(name)) {
         return Bucket.get(parsedWidth);
       }
     }
 
-    if (transform.equalsIgnoreCase("identity")) {
+    if ("identity".equalsIgnoreCase(transform)) {
       return Identity.get();
-    } else if (transform.equalsIgnoreCase("year")) {
+    } else if ("year".equalsIgnoreCase(transform)) {
       return Years.get();
-    } else if (transform.equalsIgnoreCase("month")) {
+    } else if ("month".equalsIgnoreCase(transform)) {
       return Months.get();
-    } else if (transform.equalsIgnoreCase("day")) {
+    } else if ("day".equalsIgnoreCase(transform)) {
       return Days.get();
-    } else if (transform.equalsIgnoreCase("hour")) {
+    } else if ("hour".equalsIgnoreCase(transform)) {
       return Hours.get();
-    } else if (transform.equalsIgnoreCase("void")) {
+    } else if ("void".equalsIgnoreCase(transform)) {
       return VoidTransform.get();
     }
 
@@ -73,14 +73,14 @@ public class Transforms {
     if (widthMatcher.matches()) {
       String name = widthMatcher.group(1);
       int parsedWidth = Integer.parseInt(widthMatcher.group(2));
-      if (name.equalsIgnoreCase("truncate")) {
+      if ("truncate".equalsIgnoreCase(name)) {
         return (Transform<?, ?>) Truncate.get(type, parsedWidth);
-      } else if (name.equalsIgnoreCase("bucket")) {
+      } else if ("bucket".equalsIgnoreCase(name)) {
         return (Transform<?, ?>) Bucket.get(type, parsedWidth);
       }
     }
 
-    if (transform.equalsIgnoreCase("identity")) {
+    if ("identity".equalsIgnoreCase(transform)) {
       return Identity.get(type);
     }
 
@@ -94,7 +94,7 @@ public class Transforms {
       // fall through to return unknown transform
     }
 
-    if (transform.equalsIgnoreCase("void")) {
+    if ("void".equalsIgnoreCase(transform)) {
       return VoidTransform.get();
     }
 

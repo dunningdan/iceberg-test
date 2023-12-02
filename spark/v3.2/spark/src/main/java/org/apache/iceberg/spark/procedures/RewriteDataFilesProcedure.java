@@ -177,7 +177,7 @@ class RewriteDataFilesProcedure extends BaseProcedure {
 
     // caller of this function ensures that between strategy and sortOrder, at least one of them is
     // not null.
-    if (strategy == null || strategy.equalsIgnoreCase("sort")) {
+    if (strategy == null || "sort".equalsIgnoreCase(strategy)) {
       if (!zOrderTerms.isEmpty()) {
         String[] columnNames =
             zOrderTerms.stream()
@@ -190,7 +190,7 @@ class RewriteDataFilesProcedure extends BaseProcedure {
         return action.sort();
       }
     }
-    if (strategy.equalsIgnoreCase("binpack")) {
+    if ("binpack".equalsIgnoreCase(strategy)) {
       RewriteDataFiles rewriteDataFiles = action.binPack();
       if (sortOrderString != null) {
         // calling below method to throw the error as user has set both binpack strategy and sort

@@ -112,7 +112,7 @@ public class MetadataColumns {
   }
 
   public static NestedField metadataColumn(Table table, String name) {
-    if (name.equals(PARTITION_COLUMN_NAME)) {
+    if (PARTITION_COLUMN_NAME.equals(name)) {
       return Types.NestedField.optional(
           PARTITION_COLUMN_ID,
           PARTITION_COLUMN_NAME,
@@ -124,7 +124,7 @@ public class MetadataColumns {
   }
 
   public static boolean isMetadataColumn(String name) {
-    return name.equals(PARTITION_COLUMN_NAME) || META_COLUMNS.containsKey(name);
+    return PARTITION_COLUMN_NAME.equals(name) || META_COLUMNS.containsKey(name);
   }
 
   public static boolean isMetadataColumn(int id) {

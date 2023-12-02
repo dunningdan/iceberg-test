@@ -276,14 +276,14 @@ public final class Catalogs {
           conf.get(
               InputFormatConfig.catalogPropertyConfigKey(
                   catalogName, CatalogUtil.ICEBERG_CATALOG_TYPE));
-      if (catalogName.equals(ICEBERG_HADOOP_TABLE_NAME)) {
+      if (ICEBERG_HADOOP_TABLE_NAME.equals(catalogName)) {
         return NO_CATALOG_TYPE;
       } else {
         return catalogType;
       }
     } else {
       String catalogType = conf.get(CatalogUtil.ICEBERG_CATALOG_TYPE);
-      if (catalogType != null && catalogType.equals(LOCATION)) {
+      if (catalogType != null && LOCATION.equals(catalogType)) {
         return NO_CATALOG_TYPE;
       } else {
         return catalogType;

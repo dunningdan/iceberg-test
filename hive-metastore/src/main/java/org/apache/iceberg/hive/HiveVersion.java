@@ -55,7 +55,7 @@ public enum HiveVersion {
       case "2":
         return HIVE_2;
       case "1":
-        if (versions.get(1).equals("2")) {
+        if ("2".equals(versions.get(1))) {
           return HIVE_1_2;
         } else {
           return NOT_SUPPORTED;

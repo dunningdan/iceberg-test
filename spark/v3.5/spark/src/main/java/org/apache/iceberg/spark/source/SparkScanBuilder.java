@@ -313,7 +313,7 @@ public class SparkScanBuilder
     MetricsConfig config = MetricsConfig.forTable(table);
     for (BoundAggregate aggregate : aggregates) {
       String colName = aggregate.columnName();
-      if (!colName.equals("*")) {
+      if (!"*".equals(colName)) {
         MetricsModes.MetricsMode mode = config.columnMode(colName);
         if (mode instanceof MetricsModes.None) {
           LOG.info("Skipping aggregate pushdown: No metrics for column {}", colName);

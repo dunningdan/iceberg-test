@@ -493,7 +493,7 @@ public class TestSnapshotDeltaLakeTable extends SparkDeltaLakeSnapshotTestBase {
   }
 
   private String destName(String catalogName, String dest) {
-    if (catalogName.equals(defaultSparkCatalog)) {
+    if (defaultSparkCatalog.equals(catalogName)) {
       return NAMESPACE + "." + catalogName + "_" + dest;
     }
     return catalogName + "." + NAMESPACE + "." + catalogName + "_" + dest;

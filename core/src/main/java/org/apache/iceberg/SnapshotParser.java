@@ -133,7 +133,7 @@ public class SnapshotParser {
       Iterator<String> fields = sNode.fieldNames();
       while (fields.hasNext()) {
         String field = fields.next();
-        if (field.equals(OPERATION)) {
+        if (OPERATION.equals(field)) {
           operation = JsonUtil.getString(OPERATION, sNode);
         } else {
           builder.put(field, JsonUtil.getString(field, sNode));
